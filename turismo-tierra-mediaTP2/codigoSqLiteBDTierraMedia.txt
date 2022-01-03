@@ -1,0 +1,52 @@
+DROP TABLE IF EXISTS usuario;
+CREATE TABLE usuario ("nombre" TEXT, "tipo_fav" TEXT, "presupuesto" INT, "tiempo_disp" REAL,
+	PRIMARY KEY("nombre")
+);
+
+DROP TABLE IF EXISTS atraccion;
+CREATE TABLE atraccion ("nombre" TEXT, "tipo" TEXT, "costo" INT, "tiempo" REAL, "cupo" INT,
+	PRIMARY KEY("nombre")
+);
+
+DROP TABLE IF EXISTS promocion;
+CREATE TABLE promocion ("nombre_pack" TEXT, "tipo_promo" TEXT, "tipo_atraccion" TEXT,
+"atracciones" TEXT, "porc_desc" INT, "axb_gratis" TEXT, "abs_costo" INT,
+	PRIMARY KEY ("nombre_pack")
+);
+
+DROP TABLE IF EXISTS itinerario;
+CREATE TABLE itinerario ("u_nombre" TEXT, "compras" TEXT, "gasto_total" INT, "tiempo_total" REAL,
+	PRIMARY KEY("u_nombre")
+);
+
+INSERT INTO usuario (nombre, tipo_fav, presupuesto, tiempo_disp) VALUES 
+('Eowyn','AVENTURA',10,8),
+('Gandalf','PAISAJE',100,5),
+('Sam','DEGUSTACION',36,8),
+('Galadriel','PAISAJE',120,6),
+('Aragorn','AVENTURA',50,6.5),
+('Gimli','DEGUSTACION',75,9),
+('Elrond','PAISAJE',100,5),
+('Legolas','AVENTURA',40,7),
+('Sauron','AVENTURA',150,9),
+('Pipin','DEGUSTACION',40,5);
+
+INSERT INTO atraccion (nombre, tipo, costo, tiempo, cupo) VALUES 
+('Moria','AVENTURA',10,2,6),
+('Minas Tirith','PAISAJE',5,2.5,25),
+('La Comarca','DEGUSTACION',3,6.5,150),
+('Abismo de Helm','PAISAJE',5,2,15),
+('Mordor','AVENTURA',25,3,4),
+('Lothlórien','DEGUSTACION',35,1,30),
+('Erebor','PAISAJE',12,3,32),
+('Bosque Negro','AVENTURA',3,4,12),
+('Montañas Nubladas','AVENTURA',15,5,20),
+('Ciudad del lago','DEGUSTACION',20,3,35);
+
+INSERT INTO promocion (nombre_pack, tipo_promo, tipo_atraccion, atracciones, porc_desc, axb_gratis,abs_costo) VALUES 
+('Pack aventura a peligrosa','Porcentual','AVENTURA','Bosque Negro-Mordor',20,NULL,NULL),
+('Pack vistas del este','AxB','PAISAJE','Minas Tirith-Abismo de Helm-Erebor',NULL,'Erebor',NULL),
+('Pack paladares finos','Absoluta','DEGUSTACION','Lothlórien-La Comarca',NULL,NULL,36),
+('Pack aventura absoluta','Absoluta','AVENTURA','Moria-Mordor-Montañas Nubladas',NULL,NULL,17),
+('Pack barriga llena','AxB','DEGUSTACION', 'Lothlórien-Ciudad del lago-La Comarca',NULL,'La Comarca',NULL),
+('Pack vistas altas','Porcentual','PAISAJE','Erebor-Abismo de Helm',35,NULL,NULL);
